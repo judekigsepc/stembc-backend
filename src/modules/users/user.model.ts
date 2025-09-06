@@ -1,13 +1,13 @@
 import mongoose, { Document } from "mongoose";
 
 interface IUser extends Document {
-    fullName:string,
+    userName:string,
     email: string,
     password: string,
 }
 
 const UserSchema = new mongoose.Schema<IUser>({
-    fullName: {
+    userName: {
         type: String,
         required: true
     },

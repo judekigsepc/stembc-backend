@@ -7,6 +7,7 @@
   import checkEnvVars from '@utils/checkEnv'
 
   import authRouter from '@modules/auth/auth.route';
+import registrantRouter from '@modules/registrants/registrants.route';
 
 const app = express();
 
@@ -36,4 +37,5 @@ app.get('/', (req:Request, res:Response) => {
 res.send('Server up and running')
 })
 
-app.use('/api/auth', authRouter)
+app.use('/api/v1/auth', authRouter)
+app.use('/api/v1/registrants', registrantRouter)
