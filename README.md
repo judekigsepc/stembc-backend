@@ -1,0 +1,4 @@
+
+**WELCOME TO stembc-backend PROJECT, SCAFFOLDED BY JK-CLI**
+
+
