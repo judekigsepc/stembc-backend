@@ -10,15 +10,23 @@
 import registrantRouter from '@modules/registrants/registrants.route';
 
 
-const envVars = ["PORT","DB_URI","JWT_SECRET","CORS_ORIGIN"]
+const envVars = ["PORT","DB_URI","JWT_SECRET","CORS_ORIGINS"]
 // Checking for presence of all env variables
 checkEnvVars(envVars)
 
 const app = express();
 
+const allowedOrigins = process.env.CORS_ORIGINS as unknown as string[]
+
 app.use(cors({
-origin: process.env.CORS_ORIGIN,
-credentials: true
+origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
 }))
 
 app.use(express.json());
