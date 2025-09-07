@@ -52,7 +52,7 @@ export const loginUser = async (req: Request, res: Response) => {
             secure: false // SHOULD SET THIS TO TRUE IN PROD
         })
 
-        sendSuccess(200,"User login successful",{},res)
+        sendSuccess(200,"User login successful",user,res)
     }catch (err) {
          sendError(500,'User login failed',err, res)
 

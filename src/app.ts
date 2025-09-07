@@ -9,19 +9,21 @@
   import authRouter from '@modules/auth/auth.route';
 import registrantRouter from '@modules/registrants/registrants.route';
 
+
+const envVars = ["PORT","DB_URI","JWT_SECRET","CORS_ORIGIN"]
+// Checking for presence of all env variables
+checkEnvVars(envVars)
+
 const app = express();
 
 app.use(cors({
-origin: "*",
+origin: process.env.CORS_ORIGIN,
 credentials: true
 }))
 
 app.use(express.json());
 app.use(cookieParser())
 
-const envVars = ["PORT","DB_URI","JWT_SECRET"]
-// Checking for presence of all env variables
-checkEnvVars(envVars)
 
 const port = process.env.PORT || 3000
 const dbURL = process.env.DB_URI as string
